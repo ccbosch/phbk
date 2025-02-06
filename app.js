@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 import cors from 'cors';
 
 import resasRouter from './routes/resas.js';
-
+import { keepAlive } from './services/keepalive.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -29,14 +29,11 @@ app.use(stc(path.join(__dirname, 'public')));
 app.get('/', function(req,res) {
   res.sendFile(path.join(__dirname, 'public/index.html'))
 })
-// app.use('/', indexRouter);
+app.post('/keep-alive', function(req,res){
+  console.log('keep-alive')
+})
 app.use('/resas', resasRouter);
 
-// app.post('/resas', (req,res)=> {
-
-//   console.log("resas" + JSON.stringify(req.body));
-// })
-// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
@@ -51,5 +48,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+keepAlive();
 
 export default app;
