@@ -13,6 +13,10 @@ const myself = axios.create(config);
 const min = 1000 * 60;
 const alive = min * 2;
 
+function sendKeepAlive() {
+
+}
+
 export function keepAlive() {
-  //setInterval(() => myself.post('/keep-alive', alive));
+  setInterval(() => myself.post('/keep-alive'), alive);
 }
