@@ -6,7 +6,6 @@ import logger from 'morgan';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
 
-import indexRouter from './routes/index.js';
 import resasRouter from './routes/resas.js';
 
 
@@ -30,7 +29,7 @@ app.use(stc(path.join(__dirname, 'public')));
 app.get('/', function(req,res) {
   res.sendFile(path.join(__dirname, 'public/index.html'))
 })
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/resas', resasRouter);
 
 // app.post('/resas', (req,res)=> {
