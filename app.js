@@ -27,7 +27,10 @@ app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(stc(path.join(__dirname, 'public')));
 
-//app.use('/', indexRouter);
+app.get('/', function(req,res) {
+  res.sendFile(path.join(__dirname, 'public/index.html'))
+})
+app.use('/', indexRouter);
 app.use('/resas', resasRouter);
 
 // app.post('/resas', (req,res)=> {
