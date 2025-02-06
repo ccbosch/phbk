@@ -14,5 +14,5 @@ const min = 1000 * 60;
 const alive = min * 2;
 
 export function keepAlive() {
-  setInterval(() => myself.post('/keep-alive', alive));
+  //setInterval(() => myself.post('/keep-alive', alive));
 }
