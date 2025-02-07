@@ -1,7 +1,7 @@
 import Padel from '../services/padel.js';
 import express from 'express';
 import { format } from 'date-fns';
-
+import resa from '../services/resa.js';
 const dateSearchCount = 40;
 var router = express.Router();
 
@@ -16,7 +16,8 @@ router.post('/', async function(req, res, next) {
   const ctx = JSON.stringify(req.body);
   console.log('ctx:' + req.body)
   var res = await getAllResCtx(req.body.ctx);
-  res.send(res);
+  // res.send(res);
+  resa.sendMessage();
 });
 
 export default router;

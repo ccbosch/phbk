@@ -1,4 +1,5 @@
 import axios from "axios";
+import resa from "./resa.js";
 
 const config = {
   baseURL: 'https://phbk.onrender.com',
@@ -14,9 +15,11 @@ const min = 1000 * 60;
 const alive = min * 2;
 
 function sendKeepAlive() {
-
+  resa.find();
+  console.log('Sending KA');
+  // myself.post('/keep-alive')
 }
 
 export function keepAlive() {
-  setInterval(() => myself.post('/keep-alive'), alive);
+  setInterval(() => sendKeepAlive(), alive);
 }
